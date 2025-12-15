@@ -6,6 +6,56 @@ body {
     color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Container para ícones flutuantes - FUNDO */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background: linear-gradient(135deg, #fafaf9 0%, #f3f0f8 50%, #fafaf9 100%);
+}
+
+.floating-icon {
+    position: absolute;
+    opacity: 0.18;
+    font-size: 3em;
+    animation: float 20s infinite ease-in-out;
+    pointer-events: none;
+    user-select: none;
+    color: #7a4eb7;
+    text-shadow: 0 0 10px rgba(122, 78, 183, 0.2);
+}
+
+.floating-icon:nth-child(1) { left: 10%; top: 10%; animation-delay: 0s; animation-duration: 25s; }
+.floating-icon:nth-child(2) { left: 80%; top: 15%; animation-delay: 2s; animation-duration: 30s; }
+.floating-icon:nth-child(3) { left: 20%; top: 50%; animation-delay: 4s; animation-duration: 28s; }
+.floating-icon:nth-child(4) { left: 85%; top: 60%; animation-delay: 1s; animation-duration: 26s; }
+.floating-icon:nth-child(5) { left: 15%; top: 80%; animation-delay: 3s; animation-duration: 32s; }
+.floating-icon:nth-child(6) { left: 70%; top: 35%; animation-delay: 5s; animation-duration: 24s; }
+.floating-icon:nth-child(7) { left: 40%; top: 70%; animation-delay: 2.5s; animation-duration: 27s; }
+.floating-icon:nth-child(8) { left: 60%; top: 20%; animation-delay: 4.5s; animation-duration: 29s; }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px) rotate(90deg);
+    }
+    50% {
+        transform: translateY(-40px) translateX(-10px) rotate(180deg);
+    }
+    75% {
+        transform: translateY(-20px) translateX(10px) rotate(270deg);
+    }
 }
 
 h1 {
@@ -117,4 +167,423 @@ img:hover {
     padding: 20px;
     border-radius: 8px;
     margin-top: 30px;
+}
+
+/* Seções personalizadas */
+.interests-section {
+    background-color: #e9e3f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+/* Seção Sobre Mim */
+.about-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(122, 78, 183, 0.15);
+    border-left: 4px solid #7a4eb7;
+}
+
+.about-section p {
+    color: #1a1a1a;
+    line-height: 1.8;
+    font-size: 1.05em;
+    text-align: justify;
+    margin: 0;
+}
+
+/* Galeria de Fotos */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    border: 3px solid #bba6e3;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(122, 78, 183, 0.2);
+}
+
+/* Projetos */
+.projects-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background-color: #e9e3f5;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid #7a4eb7;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(122, 78, 183, 0.2);
+}
+
+.project-card h3 {
+    margin-top: 0;
+    color: #7a4eb7;
+}
+
+.project-card p {
+    margin: 10px 0;
+    text-align: left;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-menu li {
+        text-align: center;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    .projects-section {
+        grid-template-columns: 1fr;
+    }
+
+    p {
+        text-align: left;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    .nav-menu {
+        padding: 10px;
+    }
+
+    .nav-menu a {
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+
+    .contact-info,
+    .interests-section {
+        padding: 15px;
+    }
+}
+
+/* Melhorias de Acessibilidade */
+a:focus {
+    outline: 2px solid #7a4eb7;
+    outline-offset: 2px;
+}
+
+button:focus,
+input:focus {
+    outline: 2px solid #7a4eb7;
+    outline-offset: 2px;
+}
+
+/* Redução de movimento para usuários que preferem */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    img:hover {
+        transform: none;
+    }
+
+    .project-card:hover {
+        transform: none;
+    }
+}
+
+/* Modo escuro opcional */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a2e;
+        color: #e0e0e0;
+    }
+
+    p {
+        color: #d0d0d0;
+    }
+
+    .nav-menu {
+        background-color: #16213e;
+    }
+
+    .nav-menu a {
+        color: #d4a5ff;
+    }
+
+    .contact-info,
+    .interests-section,
+    .project-card {
+        background-color: #0f3460;
+        color: #e0e0e0;
+    }
+
+    h1, h2, h3 {
+        color: #d4a5ff;
+    }
+}
+
+/* Repositórios do GitHub */
+.github-projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.github-repo {
+    background-color: #e9e3f5;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #7a4eb7;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.github-repo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(122, 78, 183, 0.3);
+    border-left-color: #d4a5ff;
+}
+
+.github-repo h3 {
+    margin-top: 0;
+    color: #7a4eb7;
+    word-break: break-word;
+}
+
+.github-repo a {
+    color: #7a4eb7;
+    font-weight: bold;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid #bba6e3;
+}
+
+.github-repo p {
+    margin: 8px 0;
+    font-size: 0.95em;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.repo-meta {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    font-size: 0.9em;
+    flex-wrap: wrap;
+}
+
+.repo-stat {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #2c114b;
+}
+
+.repo-language {
+    background-color: #d4c2ec;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.loading {
+    text-align: center;
+    color: #7a4eb7;
+    font-weight: 500;
+    grid-column: 1 / -1;
+}
+
+.github-button-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.github-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #7a4eb7 0%, #a583e6 100%);
+    color: white !important;
+    padding: 15px 40px;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(122, 78, 183, 0.3);
+}
+
+.github-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(122, 78, 183, 0.5);
+    background: linear-gradient(135deg, #a583e6 0%, #7a4eb7 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+    .github-projects {
+        color: #e0e0e0;
+    }
+
+    .github-repo {
+        background-color: #0f3460;
+    }
+
+    .github-repo:hover {
+        box-shadow: 0 12px 20px rgba(212, 165, 255, 0.3);
+    }
+
+    .repo-stat {
+        color: #d0d0d0;
+    }
+
+    .repo-language {
+        background-color: #16213e;
+        color: #d4a5ff;
+    }
+}
+
+/* Página 404 */
+.error-container {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #e9e3f5 0%, #f7f6fb 100%);
+    border-radius: 8px;
+    margin: 40px auto;
+    max-width: 600px;
+}
+
+.error-container h1 {
+    font-size: 5em;
+    margin-bottom: 10px;
+    color: #7a4eb7;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-container h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #7a4eb7;
+}
+
+.error-content {
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px 0;
+}
+
+.error-content ul {
+    margin: 15px 0;
+}
+
+.error-content li {
+    margin-bottom: 12px;
+}
+
+.error-content a {
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.error-content a:hover {
+    background-color: #d4c2ec;
+}
+
+.error-message {
+    font-size: 0.95em;
+    color: #2c114b;
+    margin-top: 30px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .error-container {
+        background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+    }
+
+    .error-content {
+        background-color: rgba(0, 0, 0, 0.3);
+        color: #e0e0e0;
+    }
+
+    .error-message {
+        color: #d0d0d0;
+    }
+
+    .about-section {
+        background-color: #0f3460;
+        color: #e0e0e0;
+        border-left-color: #d4a5ff;
+        box-shadow: 0 4px 12px rgba(212, 165, 255, 0.15);
+    }
+
+    .about-section p {
+        color: #e0e0e0;
+    }
 }
